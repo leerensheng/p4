@@ -11,98 +11,32 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DatabaseController@getIndex');
+Route::get('/user/login', 'DatabaseController@getUserLogin');
+Route::post('/user/login', 'DatabaseController@postUserLogin');
+Route::get('/user/logout', 'DatabaseController@getUserLogout');
+Route::post('/user/logout', 'DatabaseController@postUserLogout');
+Route::get('/user/create', 'DatabaseController@getUserCreate');
+Route::post('/user/create', 'DatabaseController@postUserCreate');
+Route::get('/user/update', 'DatabaseController@getUserUpdate');
+Route::post('/user/update', 'DatabaseController@postUserUpdate');
+Route::get('/user/delete', 'DatabaseController@getUserDelete');
+Route::post('/user/delete', 'DatabaseController@postUserDelete');
 
-Route::get('/user/login', function () {
-    return 'User login get';
-});
+//furniture Assets routes
 
-Route::post('/user/login', function () {
-    return 'User login post';
-});
-
-Route::get('/user/logout', function () {
-    return 'User logout get';
-});
-
-Route::post('/user/logout', function () {
-    return 'User logout post';
-});
-
-Route::get('/user/create', function () {
-    return 'User create';
-});
-
-Route::post('/user/create', function () {
-    return 'User create post';
-});
-
-Route::get('/user/update', function () {
-    return 'User update get';
-});
-
-Route::post('/user/update', function () {
-    return 'User update post';
-});
-
-Route::get('/user/delete', function () {
-    return 'User delete get';
-});
-
-Route::post('/user/delete', function () {
-    return 'User update post';
-});
-
-//Tech Assets routes
-
-Route::get('/tech/show/{tech_asset}', function ($tech_asset) {
-    return 'Show a tech item: '.$tech_asset;
-});
-
-Route::get('/tech/create', function () {
-    return 'Tech create get';
-});
-
-Route::post('/tech/create', function () {
-    return 'Tech create post';
-});
-
-Route::get('/tech/edit/{tech_asset}', function ($tech_asset) {
-    return 'Tech update this item:'.$tech_asset;
-});
-
-Route::post('/tech/edit/{tech_asset}', function ($tech_asset) {
-    return 'Tech update post'.$tech_asset;
-});
-
-Route::post('/tech/delete/{tech_asset}', function ($tech_asset) {
-    return 'User delete post'.$tech_asset;
-});
+Route::get('/tech/show/{tech_asset}', 'DatabaseController@getTechShow');
+Route::get('/tech/create', 'DatabaseController@getTechCreate');
+Route::post('/tech/create', 'DatabaseController@postTechCreate');
+Route::get('/tech/update/{tech_asset}' 'DatabaseController@getTechUpdate');
+Route::post('/tech/update/{tech_asset}' 'DatabaseController@postTechUpdate');
+Route::post('/tech/delete/{tech_asset}', 'DatabaseController@postTechDelete');
 
 //Furniture Assets routes
 
-Route::get('/furniture/show/{furniture_asset}', function ($furniture_asset) {
-    return 'Show a furniture item: '.$furniture_asset;
-});
-
-Route::get('/furniture/create', function () {
-    return 'furniture create get';
-});
-
-Route::post('/furniture/create', function () {
-    return 'furniture create post';
-});
-
-Route::get('/furniture/edit/{furniture_asset}', function ($furniture_asset) {
-    return 'furniture update this item:'.$furniture_asset;
-});
-
-Route::post('/furniture/edit/{furniture_asset}', function ($furniture_asset) {
-    return 'furniture update post'.$furniture_asset;
-});
-
-Route::post('/furniture/delete/{furniture_asset}', function ($furniture_asset) {
-    return 'User delete post'.$furniture_asset;
-});
+Route::get('/furniture/show/{furniture_asset}', 'DatabaseController@getFurnitureShow');
+Route::get('/furniture/create', 'DatabaseController@getFurnitureCreate');
+Route::post('/furniture/create', 'DatabaseController@postFurnitureCreate');
+Route::get('/furniture/update/{furniture_asset}' 'DatabaseController@getFurnitureUpdate');
+Route::post('/furniture/update/{furniture_asset}' 'DatabaseController@postFurnitureUpdate');
+Route::post('/furniture/delete/{furniture_asset}', 'DatabaseController@postFurnitureDelete');
