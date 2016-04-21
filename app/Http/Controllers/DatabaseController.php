@@ -3,6 +3,7 @@
 namespace p4\Http\Controllers;
 
 use p4\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class DatabaseController extends Controller {
 
@@ -50,16 +51,26 @@ class DatabaseController extends Controller {
 
     //Tech Asset Controllers
 
-    public function getTechShow($tech_asset) {
-        return 'Show a tech item: '.$tech_asset;
+    public function getTechShow($tech_asset = null) {
+        return view('inventory_assets.showTechAsset')->with('tech_asset', $tech_asset);
     }
 
     public function getTechCreate() {
-        return 'Tech create get';
+        return view('inventory_assets.createTechAsset');
     }
 
-    public function postTechCreate() {
-        return 'Tech create post';
+    public function postTechCreate(Request $request) {
+        $this->validate($request,[
+            'serial_number' => 'required'
+        ]);
+
+        $data = $request->only('serial_number','manufacturer','model','purchase_date', 'cpu','ram','storage_size','warranty_expiration');
+        $tech_asset = new \p4\Tech_asset($data);
+        $tech_asset->save();
+
+        \Session::flash('message','Your technology asset was saved to the database');
+
+        return redirect('/');
     }
 
     public function getTechUpdate($tech_asset) {
