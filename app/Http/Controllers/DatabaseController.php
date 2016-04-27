@@ -11,44 +11,6 @@ class DatabaseController extends Controller {
         return 'Inventory: Application Homepage';
     }
 
-    //Login Controllers
-
-    public function getUserLogin() {
-        return 'User login get';
-    }
-
-    public function postUserLogin() {
-        return 'User login post';
-    }
-
-    public function getUserLogout() {
-        return 'User logout post';
-    }
-
-    public function getUserCreate() {
-        return 'User create';
-    }
-
-    public function postUserCreate() {
-        return 'User create post';
-    }
-
-    public function getUserUpdate() {
-        return 'User update get';
-    }
-
-    public function postUserUpdate() {
-        return 'User update post';
-    }
-
-    public function getUserDelete() {
-        return 'User delete get';
-    }
-
-    public function postUserDelete() {
-        return 'User delete post';
-    }
-
     //Tech Asset Controllers
 
     public function getTechShow($tech_asset = null) {
@@ -87,17 +49,26 @@ class DatabaseController extends Controller {
 
     //furniture Asset Controllers
 
-    public function getFurnitureShow($furniture_asset) {
-        return 'Show a Furniture item: '.$furniture_asset;
+    public function getFurnitureShow($furniture_asset = null) {
+        return view('inventory_assets.showFurnitureAsset')->with('furniture_asset', $furniture_asset);
     }
 
     public function getFurnitureCreate() {
-        return 'Furniture create get';
+        return view('inventory_assets.createFurnitureAsset');
     }
 
     public function postFurnitureCreate() {
-        return 'Furniture create post';
-    }
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+        $data = $request->only('name','description','purchase_date','purchase_price');
+        $tech_asset = new \p4\Furniture_asset($data);
+        $tech_asset->save();
+
+        \Session::flash('message','Your furniture asset was saved to the database');
+
+        return redirect('/');    }
 
     public function getFurnitureUpdate($furniture_asset) {
         return 'Furniture update get'.$furniture_asset;

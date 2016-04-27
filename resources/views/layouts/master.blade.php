@@ -18,10 +18,9 @@
 
     <nav>
         <ul class='nav nav-pills'>
-            <li role='presentation'><a href=''>Home</a></li>
-            <li role='presentation'><a href=''>Add a Tech Item</a></li>
-            <li role='presentation'><a href=''>Add a Furniture Item</a></li>
-            <li role='presentation'><a href=''>Search for an Item</a></li>
+            <li role='presentation'><a href='/'>Home</a></li>
+            <li role='presentation'><a href='/tech/create'>Add a Tech Item</a></li>
+            <li role='presentation'><a href='/furniture/create'>Add a Furniture Item</a></li>
         </ul>
     </nav>
 

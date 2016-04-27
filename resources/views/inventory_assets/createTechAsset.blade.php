@@ -10,7 +10,7 @@
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-4">
-                <label>Item Serial Number</label>
+                <label>Computer's Serial Number</label>
                 <br>
                 <input type='text' name='serial_number' value='{{ old('serial_number') }}'>
                 <br>

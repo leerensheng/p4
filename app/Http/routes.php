@@ -11,17 +11,19 @@
 |
 */
 
-Route::get('/', 'DatabaseController@getTechShow');
-Route::get('/user/login', 'DatabaseController@getUserLogin');
-Route::post('/user/login', 'DatabaseController@postUserLogin');
-Route::get('/user/logout', 'DatabaseController@getUserLogout');
-Route::post('/user/logout', 'DatabaseController@postUserLogout');
-Route::get('/user/create', 'DatabaseController@getUserCreate');
-Route::post('/user/create', 'DatabaseController@postUserCreate');
-Route::get('/user/update', 'DatabaseController@getUserUpdate');
-Route::post('/user/update', 'DatabaseController@postUserUpdate');
-Route::get('/user/delete', 'DatabaseController@getUserDelete');
-Route::post('/user/delete', 'DatabaseController@postUserDelete');
+//Home Route
+
+Route::get('/', 'DatabaseController@getTechCreate');
+
+//User Authentication routes
+
+Route::get('/login', 'Auth\AuthController@getLogin');
+Route::post('/login', 'Auth\AuthController@postLogin');
+
+Route::get('/logout', 'Auth\AuthController@logout');
+
+Route::get('/register', 'Auth\AuthController@getRegister');
+Route::post('/register', 'Auth\AuthController@postRegister');
 
 //Tech Assets routes
 
