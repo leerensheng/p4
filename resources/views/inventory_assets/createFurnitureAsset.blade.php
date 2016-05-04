@@ -18,7 +18,7 @@
                 <br>
                 <input type='text' name='description' value='{{ old('description') }}'>
                 <br>
-                <label>purchase_price</label>
+                <label>Purchase Price</label>
                 <br>
                 <input type='int' name='purchase_price' value='{{ old('purchase_price') }}'>
                 <br>
@@ -27,15 +27,14 @@
                 <input type='date' name='purchase_date' value='{{ old('purchase_date') }}'>
                 <br>
             </div>
-            <div class="col-md-4">
-                <br>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <br>
             </div>
         </div>
         <div class='row'>
-            <button type='submit' class='btn btn-primary' value='Create Item'>Create Item</button>
+            <div class="col-md-4">
+                <button type='submit' class='btn btn-primary' value='Create Item'>Create Item</button>
+            </div>
         </div>
     </form>
 @stop

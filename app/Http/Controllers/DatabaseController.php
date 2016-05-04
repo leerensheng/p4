@@ -10,8 +10,10 @@ class DatabaseController extends Controller {
     public function getIndex() {
 
         $tech_assets = \p4\Tech_asset::orderBy('id','desc')->get();
+        $furniture_assets = \p4\Furniture_asset::orderBy('id','desc')->get();
 
-        return view('inventory_assets.index')->with('tech_assets',$tech_assets);
+        return view('inventory_assets.index', compact('tech_assets','furniture_assets'));
+
     }
 
     //Tech Asset Controllers
@@ -51,9 +53,10 @@ class DatabaseController extends Controller {
         return 'Tech delete post'.$tech_asset;
     }
 
-    //furniture Asset Controllers
+    //Furniture Asset Controllers
 
-    public function getFurnitureShow($furniture_asset = null) {
+    public function getFurnitureShow($id = null) {
+        $furniture_asset = \p4\Furniture_asset::find($id);
         return view('inventory_assets.showFurnitureAsset')->with('furniture_asset', $furniture_asset);
     }
 
@@ -67,8 +70,8 @@ class DatabaseController extends Controller {
         ]);
 
         $data = $request->only('name','description','purchase_date','purchase_price');
-        $tech_asset = new \p4\Furniture_asset($data);
-        $tech_asset->save();
+        $furniture_asset = new \p4\Furniture_asset($data);
+        $furniture_asset->save();
 
         \Session::flash('message','Your furniture asset was saved to the database');
 

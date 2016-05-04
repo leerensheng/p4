@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/furniture/update/{furniture_asset}', 'DatabaseController@postFurnitureUpdate');
     Route::post('/furniture/delete/{furniture_asset}', 'DatabaseController@postFurnitureDelete');
 });
-Route::get('/furniture/show/{furniture_asset}', 'DatabaseController@getFurnitureShow');
+Route::get('/furniture/show/{furniture_asset?}', 'DatabaseController@getFurnitureShow');
 
 //Debug Route
 

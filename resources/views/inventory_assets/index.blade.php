@@ -39,4 +39,28 @@
         </tbody>
     </table>
 
+    <h2>All Furniture Assets</h2>
+    <table border='1'>
+        <thead>
+            <tr>
+                <td>Database ID Number</td>
+                <td>Item Name</td>
+                <td>Description</td>
+                <td>Purchase Price<br> (in RMB)</td>
+                <td>Purchase Date</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($furniture_assets as $furniture_asset)
+            <tr>
+                <td>{{ $furniture_asset->id }}</td>
+                <td>{{ $furniture_asset->name }}</td>
+                <td>{{ $furniture_asset->description }}</td>
+                <td>{{ $furniture_asset->purchase_price }}</td>
+                <td>{{ $furniture_asset->purchase_date }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 @stop
