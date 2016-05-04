@@ -44,10 +44,6 @@
                 <br>
                 <input type='int' name='storage_size' value='{{ old('storage_size') }}'>
                 <br>
-                <label>Item Storage Type</label>
-                <br>
-                <input type='text' name='storage_type' value='{{ old('storage_type') }}'>
-                <br>
                 <label>Warranty Expiration</label>
                 <br>
                 <input type='date' name='warranty_expiration' value='{{ old('warranty_expiration') }}'>

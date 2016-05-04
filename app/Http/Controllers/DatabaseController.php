@@ -8,12 +8,16 @@ use Illuminate\Http\Request;
 class DatabaseController extends Controller {
 
     public function getIndex() {
-        return 'Inventory: Application Homepage';
+
+        $tech_assets = \p4\Tech_asset::orderBy('id','desc')->get();
+
+        return view('inventory_assets.index')->with('tech_assets',$tech_assets);
     }
 
     //Tech Asset Controllers
 
-    public function getTechShow($tech_asset = null) {
+    public function getTechShow($id = null) {
+        $tech_asset = \p4\Tech_asset::find($id);
         return view('inventory_assets.showTechAsset')->with('tech_asset', $tech_asset);
     }
 
@@ -68,7 +72,8 @@ class DatabaseController extends Controller {
 
         \Session::flash('message','Your furniture asset was saved to the database');
 
-        return redirect('/');    }
+        return redirect('/');
+    }
 
     public function getFurnitureUpdate($furniture_asset) {
         return 'Furniture update get'.$furniture_asset;

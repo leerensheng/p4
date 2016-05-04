@@ -13,7 +13,7 @@
 
 //Home Route
 
-Route::get('/', 'DatabaseController@getTechCreate');
+Route::get('/', 'DatabaseController@getIndex');
 
 //User Authentication routes
 
@@ -27,21 +27,25 @@ Route::post('/register', 'Auth\AuthController@postRegister');
 
 //Tech Assets routes
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/tech/create', 'DatabaseController@getTechCreate');
+    Route::post('/tech/create', 'DatabaseController@postTechCreate');
+    Route::get('/tech/update/{tech_asset}', 'DatabaseController@getTechUpdate');
+    Route::post('/tech/update/{tech_asset}', 'DatabaseController@postTechUpdate');
+    Route::post('/tech/delete/{tech_asset}', 'DatabaseController@postTechDelete');
+});
 Route::get('/tech/show/{tech_asset?}', 'DatabaseController@getTechShow');
-Route::get('/tech/create', 'DatabaseController@getTechCreate');
-Route::post('/tech/create', 'DatabaseController@postTechCreate');
-Route::get('/tech/update/{tech_asset}', 'DatabaseController@getTechUpdate');
-Route::post('/tech/update/{tech_asset}', 'DatabaseController@postTechUpdate');
-Route::post('/tech/delete/{tech_asset}', 'DatabaseController@postTechDelete');
 
 //Furniture Assets routes
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/furniture/create', 'DatabaseController@getFurnitureCreate');
+    Route::post('/furniture/create', 'DatabaseController@postFurnitureCreate');
+    Route::get('/furniture/update/{furniture_asset}', 'DatabaseController@getFurnitureUpdate');
+    Route::post('/furniture/update/{furniture_asset}', 'DatabaseController@postFurnitureUpdate');
+    Route::post('/furniture/delete/{furniture_asset}', 'DatabaseController@postFurnitureDelete');
+});
 Route::get('/furniture/show/{furniture_asset}', 'DatabaseController@getFurnitureShow');
-Route::get('/furniture/create', 'DatabaseController@getFurnitureCreate');
-Route::post('/furniture/create', 'DatabaseController@postFurnitureCreate');
-Route::get('/furniture/update/{furniture_asset}', 'DatabaseController@getFurnitureUpdate');
-Route::post('/furniture/update/{furniture_asset}', 'DatabaseController@postFurnitureUpdate');
-Route::post('/furniture/delete/{furniture_asset}', 'DatabaseController@postFurnitureDelete');
 
 //Debug Route
 

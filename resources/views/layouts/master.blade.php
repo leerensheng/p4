@@ -18,9 +18,16 @@
 
     <nav>
         <ul class='nav nav-pills'>
-            <li role='presentation'><a href='/'>Home</a></li>
-            <li role='presentation'><a href='/tech/create'>Add a Tech Item</a></li>
-            <li role='presentation'><a href='/furniture/create'>Add a Furniture Item</a></li>
+            @if(Auth::check())
+                <li role='presentation'><a href='/'>Home</a></li>
+                <li role='presentation'><a href='/tech/create'>Add a Tech Item</a></li>
+                <li role='presentation'><a href='/furniture/create'>Add a Furniture Item</a></li>
+                <li role='presentation'><a href='/logout'>Log Out</a></li>
+            @else
+                <li role='presentation'><a href='/'>Home</a></li>
+                <li role='presentation'><a href='/login'>Login</a></li>
+                <li role='presentation'><a href='/register'>Register</a></li>
+            @endif
         </ul>
     </nav>
 
