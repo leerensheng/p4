@@ -13,41 +13,41 @@
             <div class="col-md-4">
                 <label>Computer's Serial Number</label>
                 <br>
-                <input type='text' name='serial_number' value='{{ old('serial_number') }}'>
+                <input id='serial_number' type='text' name='serial_number' value='{{ $tech_asset->serial_number }}'>
                 <br>
                 <label>Manufacturer</label>
                 <br>
-                <input type='text' name='manufacturer' value='{{ old('manufacturer') }}'>
+                <input type='text' id='manufacturer' name='manufacturer' value='{{ $tech_asset->manufacturer }}'>
                 <br>
                 <label>Model</label>
                 <br>
-                <input type='text' name='model' value='{{ old('model') }}'>
+                <input type='text' name='model' value='{{ $tech_asset->model }}'>
                 <br>
                 <label>Purchase Date</label>
                 <br>
-                <input type='date' name='purchase_date' value='{{ old('purchase_date') }}'>
+                <input type='date' name='purchase_date' value='{{ $tech_asset->purchase_date }}'>
                 <br>
                 <label>Purchase Price</label>
                 <br>
-                <input type='int' name='purchase_price' value='{{ old('purchase_price') }}'>
+                <input type='int' name='purchase_price' value='{{ $tech_asset->purchase_price }}'>
                 <br>
             </div>
             <div class="col-md-4">
                 <label>CPU</label>
                 <br>
-                <input type='text' name='cpu' value='{{ old('cpu') }}'>
+                <input type='text' name='cpu' value='{{ $tech_asset->cpu }}'>
                 <br>
                 <label>RAM</label>
                 <br>
-                <input type='int' name='ram' value='{{ old('ram') }}'>
+                <input type='int' name='ram' value='{{ $tech_asset->ram }}'>
                 <br>
                 <label>Storage Size</label>
                 <br>
-                <input type='int' name='storage_size' value='{{ old('storage_size') }}'>
+                <input type='int' name='storage_size' value='{{ $tech_asset->storage_size }}'>
                 <br>
                 <label>Warranty Expiration</label>
                 <br>
-                <input type='date' name='warranty_expiration' value='{{ old('warranty_expiration') }}'>
+                <input type='date' name='warranty_expiration' value='{{ $tech_asset->warranty_expiration }}'>
                 <br>
             </div>
             <div class="col-md-4">

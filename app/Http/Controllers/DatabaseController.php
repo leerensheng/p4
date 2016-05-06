@@ -45,23 +45,37 @@ class DatabaseController extends Controller {
         $tech_asset = \p4\Tech_asset::find($id);
 
         if(is_null($tech_asset)) {
-            \Session::flash('message','Book not found');
+            \Session::flash('message','Tech Asset not found');
             return redirect('/');
         }
         return view('inventory_assets.updateTechAsset')
-            ->with('serial_number',$serial_number)
-            ->with('manufacturer',$manufacturer)
-            ->with('model',$model)
-            ->with('purchase_date',$purchase_date)
-            ->with('cpu',$cpu)
-            ->with('ram',$ram)
-            ->with('storage_size',$storage_size)
-            ->with('warranty_expiration',$warranty_expiration);
-
+            ->with('tech_asset',$tech_asset);
     }
 
-    public function postTechUpdate($tech_asset) {
-        return 'Tech update post'.$tech_asset;
+    public function postTechUpdate(Request $request) {
+
+        $messages = 'This field is required';
+
+        $this->validate($request,[
+            'serial_number' => 'required'
+        ]);
+
+        $tech_asset = \p4\Tech_asset::find($request->id);
+
+        $tech_asset->serial_number = $request->serial_number;
+        $tech_asset->manufacturer = $request->manufacturer;
+        $tech_asset->model = $request->model;
+        $tech_asset->purchase_date = $request->purchase_date;
+        $tech_asset->purchase_price = $request->purchase_price;
+        $tech_asset->cpu = $request->cpu;
+        $tech_asset->ram = $request->ram;
+        $tech_asset->storage_size = $request->storage_size;
+        $tech_asset->warranty_expiration = $request->warranty_expiration;
+
+        $tech_asset->save();
+
+        \Session::flash('message','Your updates were saved.');
+        return redirect('/tech/update/'.$request->id);
     }
 
     public function postTechDelete($tech_asset) {
