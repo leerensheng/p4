@@ -54,7 +54,9 @@
             </div>
         </div>
         <div class='row'>
-            <button type='submit' class='btn btn-primary' value='Create Item'>Create Item</button>
+            <div class='col-md-2'>
+                <button type='submit' class='btn btn-primary' value='Create Item'>Create Item</button>
+            </div>
         </div>
     </form>
 @stop

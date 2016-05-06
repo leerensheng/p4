@@ -32,7 +32,7 @@ class DatabaseController extends Controller {
             'serial_number' => 'required'
         ]);
 
-        $data = $request->only('serial_number','manufacturer','model','purchase_date', 'cpu','ram','storage_size','warranty_expiration');
+        $data = $request->only('serial_number','manufacturer','model','purchase_date','purchase_price','cpu','ram','storage_size','warranty_expiration');
         $tech_asset = new \p4\Tech_asset($data);
         $tech_asset->save();
 
@@ -41,8 +41,23 @@ class DatabaseController extends Controller {
         return redirect('/');
     }
 
-    public function getTechUpdate($tech_asset) {
-        return 'Tech update get'.$tech_asset;
+    public function getTechUpdate($id) {
+        $tech_asset = \p4\Tech_asset::find($id);
+
+        if(is_null($tech_asset)) {
+            \Session::flash('message','Book not found');
+            return redirect('/');
+        }
+        return view('inventory_assets.updateTechAsset')
+            ->with('serial_number',$serial_number)
+            ->with('manufacturer',$manufacturer)
+            ->with('model',$model)
+            ->with('purchase_date',$purchase_date)
+            ->with('cpu',$cpu)
+            ->with('ram',$ram)
+            ->with('storage_size',$storage_size)
+            ->with('warranty_expiration',$warranty_expiration);
+
     }
 
     public function postTechUpdate($tech_asset) {
@@ -64,7 +79,7 @@ class DatabaseController extends Controller {
         return view('inventory_assets.createFurnitureAsset');
     }
 
-    public function postFurnitureCreate() {
+    public function postFurnitureCreate(Request $request) {
         $this->validate($request,[
             'name' => 'required'
         ]);

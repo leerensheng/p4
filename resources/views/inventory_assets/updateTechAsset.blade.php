@@ -7,6 +7,7 @@
 @section('content')
     <h2>Update a Technology Asset</h2>
     <form method='post' action='/tech/update'>
+        <input type='hidden' name='id' value='{{$tech_asset->id}}'>
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-4">
@@ -54,7 +55,9 @@
             </div>
         </div>
         <div class='row'>
-            <button type='submit' class='btn btn-primary' value='Update Item'>Update Item</button>
+            <div class='col-md-2'>
+                <button type='submit' class='btn btn-primary' value='Update Item'>Update Item</button>
+            </div>
         </div>
     </form>
 @stop
