@@ -24,7 +24,7 @@
         <tbody>
             @foreach($tech_assets as $tech_asset)
             <tr>
-                <td><a href='http://{{ $_SERVER['REQUEST_URI'] }}/tech/show/{{ $tech_asset->id }}'>{{ $tech_asset->id }}</a></td>
+                <td><a href='http://{{ $_SERVER['SERVER_NAME'] }}/tech/show/{{ $tech_asset->id }}'>{{ $tech_asset->id }}</a></td>
                 <td>{{ $tech_asset->serial_number }}</td>
                 <td>{{ $tech_asset->manufacturer }}</td>
                 <td>{{ $tech_asset->model }}</td>
