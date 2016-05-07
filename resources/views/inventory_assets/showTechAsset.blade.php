@@ -39,8 +39,7 @@
         </table>
 
         <a href='/tech/update/{{$tech_asset->id}}'>Edit</a><br>
-        <a href='/tech/delete/{{$tech_asset->id}}'>Delete</a><br>
-
+        <a href='/tech/confirm-delete/{{$tech_asset->id}}'>Delete</a><br>
     @else
         <p>No item selected.</p>
     @endif

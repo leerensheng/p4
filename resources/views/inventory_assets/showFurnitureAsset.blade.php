@@ -28,8 +28,8 @@
             </tbody>
         </table>
 
-        <a href='/tech/update/{{ $furniture_asset->id }}'>Edit</a><br>
-        <a href='/tech/delete/{{ $furniture_asset->id }}'>Delete</a><br>
+        <a href='/furniture/update/{{ $furniture_asset->id }}'>Edit</a><br>
+        <a href='/furniture/confirm-delete/{{ $furniture_asset->id }}'>Delete</a><br>
     @else
         <p>No item selected.</p>
     @endif

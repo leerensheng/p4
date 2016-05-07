@@ -53,7 +53,7 @@
         <tbody>
             @foreach($furniture_assets as $furniture_asset)
             <tr>
-                <td>{{ $furniture_asset->id }}</td>
+                <td><a href='http://{{ $_SERVER['SERVER_NAME'] }}/furniture/show/{{ $furniture_asset->id }}'>{{ $furniture_asset->id }}</a></td>
                 <td>{{ $furniture_asset->name }}</td>
                 <td>{{ $furniture_asset->description }}</td>
                 <td>{{ $furniture_asset->purchase_price }}</td>

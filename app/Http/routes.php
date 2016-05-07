@@ -32,17 +32,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/tech/create', 'DatabaseController@postTechCreate');
     Route::get('/tech/update/{tech_asset?}', 'DatabaseController@getTechUpdate');
     Route::post('/tech/update', 'DatabaseController@postTechUpdate');
-    Route::post('/tech/delete/{tech_asset}', 'DatabaseController@postTechDelete');
+    Route::get('/tech/confirm-delete/{id?}', 'DatabaseController@getConfirmTechDelete');
+    Route::get('/tech/delete/{id?}', 'DatabaseController@getDoTechDelete');
+    Route::get('/tech/show/{tech_asset?}', 'DatabaseController@getTechShow');
 });
-Route::get('/tech/show/{tech_asset?}', 'DatabaseController@getTechShow');
 
 //Furniture Assets routes
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/furniture/create', 'DatabaseController@getFurnitureCreate');
     Route::post('/furniture/create', 'DatabaseController@postFurnitureCreate');
-    Route::get('/furniture/update/{furniture_asset}', 'DatabaseController@getFurnitureUpdate');
-    Route::post('/furniture/update/{furniture_asset}', 'DatabaseController@postFurnitureUpdate');
-    Route::post('/furniture/delete/{furniture_asset}', 'DatabaseController@postFurnitureDelete');
+    Route::get('/furniture/update/{furniture_asset?}', 'DatabaseController@getFurnitureUpdate');
+    Route::post('/furniture/update', 'DatabaseController@postFurnitureUpdate');
+    Route::get('/furniture/confirm-delete/{id?}', 'DatabaseController@getConfirmFurnitureDelete');
+    Route::get('/furniture/delete/{id?}', 'DatabaseController@getDoFurnitureDelete');
+    Route::get('/furniture/show/{furniture_asset?}', 'DatabaseController@getFurnitureShow');
+
 });
-Route::get('/furniture/show/{furniture_asset?}', 'DatabaseController@getFurnitureShow');

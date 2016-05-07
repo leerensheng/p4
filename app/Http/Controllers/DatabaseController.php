@@ -78,8 +78,23 @@ class DatabaseController extends Controller {
         return redirect('/tech/update/'.$request->id);
     }
 
-    public function postTechDelete($tech_asset) {
-        return 'Tech delete post'.$tech_asset;
+    public function getConfirmTechDelete($id = null) {
+        $tech_asset = \p4\Tech_asset::find($id);
+        return view('inventory_assets.deleteTechAsset')->with('tech_asset', $tech_asset);
+    }
+
+    public function getDoTechDelete($id = null) {
+        $tech_asset = \p4\Tech_asset::find($id);
+
+        if(is_null($tech_asset)) {
+            \Session::flash('message','Technology Asset not found.');
+            return redirect('/');
+        }
+
+        $tech_asset->delete();
+
+        \Session::flash('message',$tech_asset->serial_number.' was deleted.');
+        return redirect('/');
     }
 
     //Furniture Asset Controllers
@@ -107,16 +122,55 @@ class DatabaseController extends Controller {
         return redirect('/');
     }
 
-    public function getFurnitureUpdate($furniture_asset) {
-        return 'Furniture update get'.$furniture_asset;
+    public function getFurnitureUpdate($id) {
+        $furniture_asset = \p4\Furniture_asset::find($id);
+
+        if(is_null($furniture_asset)) {
+            \Session::flash('message','Furniture Asset not found');
+            return redirect('/');
+        }
+        return view('inventory_assets.updateFurnitureAsset')
+            ->with('furniture_asset',$furniture_asset);
     }
 
-    public function postFurnitureUpdate($furniture_asset) {
-        return 'Furniture update post'.$furniture_asset;
+    public function postFurnitureUpdate(Request $request) {
+
+        $messages = 'This field is required';
+
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+        $furniture_asset = \p4\Furniture_asset::find($request->id);
+
+        $furniture_asset->name = $request->name;
+        $furniture_asset->description = $request->description;
+        $furniture_asset->purchase_date = $request->purchase_date;
+        $furniture_asset->purchase_price = $request->purchase_price;
+
+        $furniture_asset->save();
+
+        \Session::flash('message','Your updates were saved.');
+        return redirect('/furniture/update/'.$request->id);
     }
 
-    public function postFurnitureDelete($furniture_asset) {
-        return 'Furniture delete post'.$furniture_asset;
+    public function getConfirmFurnitureDelete($id = null) {
+        $furniture_asset = \p4\Furniture_asset::find($id);
+        return view('inventory_assets.deleteFurnitureAsset')->with('furniture_asset', $furniture_asset);
+    }
+
+    public function getDoFurnitureDelete($id = null) {
+        $furniture_asset = \p4\Furniture_asset::find($id);
+
+        if(is_null($furniture_asset)) {
+            \Session::flash('message','Furniture Asset not found.');
+            return redirect('/');
+        }
+
+        $furniture_asset->delete();
+
+        \Session::flash('message',$furniture_asset->name.' was deleted.');
+        return redirect('/');
     }
 
 } #eoc

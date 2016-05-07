@@ -21,33 +21,33 @@
                 <br>
                 <label>Model</label>
                 <br>
-                <input type='text' name='model' value='{{ $tech_asset->model }}'>
+                <input type='text' id='model' name='model' value='{{ $tech_asset->model }}'>
                 <br>
                 <label>Purchase Date</label>
                 <br>
-                <input type='date' name='purchase_date' value='{{ $tech_asset->purchase_date }}'>
+                <input type='date' id='purchase_date' name='purchase_date' value='{{ $tech_asset->purchase_date }}'>
                 <br>
                 <label>Purchase Price</label>
                 <br>
-                <input type='int' name='purchase_price' value='{{ $tech_asset->purchase_price }}'>
+                <input type='int' id='purchase_price' name='purchase_price' value='{{ $tech_asset->purchase_price }}'>
                 <br>
             </div>
             <div class="col-md-4">
                 <label>CPU</label>
                 <br>
-                <input type='text' name='cpu' value='{{ $tech_asset->cpu }}'>
+                <input type='text' id='cpu' name='cpu' value='{{ $tech_asset->cpu }}'>
                 <br>
                 <label>RAM</label>
                 <br>
-                <input type='int' name='ram' value='{{ $tech_asset->ram }}'>
+                <input type='int' id='ram' name='ram' value='{{ $tech_asset->ram }}'>
                 <br>
                 <label>Storage Size</label>
                 <br>
-                <input type='int' name='storage_size' value='{{ $tech_asset->storage_size }}'>
+                <input type='int' id='storage_size' name='storage_size' value='{{ $tech_asset->storage_size }}'>
                 <br>
                 <label>Warranty Expiration</label>
                 <br>
-                <input type='date' name='warranty_expiration' value='{{ $tech_asset->warranty_expiration }}'>
+                <input type='date' id='warranty_expiration' name='warranty_expiration' value='{{ $tech_asset->warranty_expiration }}'>
                 <br>
             </div>
             <div class="col-md-4">

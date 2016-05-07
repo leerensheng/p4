@@ -6,7 +6,7 @@
 
 @section('content')
     <h2>Create a Furniture Asset</h2>
-    <form method='post' action='/tech/create'>
+    <form method='post' action='/furniture/create'>
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-4">
