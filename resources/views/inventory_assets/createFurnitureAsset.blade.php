@@ -12,7 +12,7 @@
             <div class="col-md-4">
                 <label>The Item's Name</label>
                 <br>
-                <input type='text' name='item_name' value='{{ old('item_name') }}'>
+                <input type='text' name='name' value='{{ old('name') }}'>
                 <br>
                 <label>Description</label>
                 <br>

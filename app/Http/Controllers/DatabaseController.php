@@ -113,7 +113,7 @@ class DatabaseController extends Controller {
             'name' => 'required'
         ]);
 
-        $data = $request->only('name','description','purchase_date','purchase_price');
+        $data = $request->only('name','description','purchase_price','purchase_date');
         $furniture_asset = new \p4\Furniture_asset($data);
         $furniture_asset->save();
 
