@@ -23,7 +23,7 @@
                 <br>
                 <input type='text' id='purchase_price' name='purchase_price' value='{{ $furniture_asset->purchase_price }}'>
                 <br>
-                <label>Purchase Date</label>
+                <label>Purchase Date<br>"YYYY-MM-DD"</label>
                 <br>
                 <input type='date' id='purchase_date' name='purchase_date' value='{{ $furniture_asset->purchase_date }}'>
                 <br>

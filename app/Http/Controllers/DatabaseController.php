@@ -57,7 +57,12 @@ class DatabaseController extends Controller {
         $messages = 'This field is required';
 
         $this->validate($request,[
-            'serial_number' => 'required'
+            'serial_number' => 'required',
+            'manufacturer' => 'required',
+            'purchase_date' => 'required|date',
+            'purchase_price' => 'integer',
+            'ram' => 'integer',
+            'storage_size' => 'integer'
         ]);
 
         $tech_asset = \p4\Tech_asset::find($request->id);
@@ -110,7 +115,10 @@ class DatabaseController extends Controller {
 
     public function postFurnitureCreate(Request $request) {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required',
+            'description' => 'required',
+            'purchase_date' => 'required|date',
+            'purchase_price' => 'required'
         ]);
 
         $data = $request->only('name','description','purchase_price','purchase_date');

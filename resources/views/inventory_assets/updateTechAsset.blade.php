@@ -23,7 +23,7 @@
                 <br>
                 <input type='text' id='model' name='model' value='{{ $tech_asset->model }}'>
                 <br>
-                <label>Purchase Date</label>
+                <label>Purchase Date<br>"YYYY-MM-DD"</label>
                 <br>
                 <input type='date' id='purchase_date' name='purchase_date' value='{{ $tech_asset->purchase_date }}'>
                 <br>

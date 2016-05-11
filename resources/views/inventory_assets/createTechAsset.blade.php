@@ -22,7 +22,7 @@
                 <br>
                 <input type='text' name='model' value='{{ old('model') }}'>
                 <br>
-                <label>Purchase Date</label>
+                <label>Purchase Date<br>"YYYY-MM-DD"</label>
                 <br>
                 <input type='date' name='purchase_date' value='{{ old('purchase_date') }}'>
                 <br>
