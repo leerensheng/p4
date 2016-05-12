@@ -29,3 +29,13 @@ td {
 table {
     margin-bottom: 30px;
 }
+.flash_message {
+    width:100%;
+    text-align:center;
+    padding:5px;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:yellow;
+    font-weight:bold;
+}

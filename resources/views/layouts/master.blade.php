@@ -12,6 +12,11 @@
     <link href='/css/style.css' type='text/css' rel='Stylesheet'>
 </head>
 <body>
+
+    @if(Session::get('message') != null)
+        <div class='flash_message'>{{ Session::get('message') }}</div>
+    @endif
+
     <header>
         <h1>Inventory Database</h1>
     </header>
